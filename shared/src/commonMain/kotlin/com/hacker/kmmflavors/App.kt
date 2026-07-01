@@ -1,49 +1,38 @@
 package com.hacker.kmmflavors
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import org.jetbrains.compose.resources.painterResource
+import androidx.compose.ui.unit.dp
+import com.hacker.kmmflavors.config.AppConfigFacade
+import com.hacker.kmmflavors.config.ConfigSummaryCard
+import org.koin.compose.koinInject
 
-import kmmflavors.shared.generated.resources.Res
-import kmmflavors.shared.generated.resources.compose_multiplatform
-
+/**
+ * Cross-platform entry point: renders the config resolved by whichever [com.hacker.core.config.BuildSelector]
+ * was passed to `initKoin` on this platform (androidApp passes `AndroidFlavorSelector`; an iOS
+ * entry point would pass its own). Not annotated with `@Preview`: rendering it requires a live
+ * Koin instance, which `initKoin` only provides once a real app has started - preview
+ * rendering never calls it.
+ */
 @Composable
-@Preview
 fun App() {
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primaryContainer)
-                .safeContentPadding()
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
-            }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
-                }
-            }
+        Surface(modifier = Modifier.fillMaxSize()) {
+            val facade = koinInject<AppConfigFacade>()
+            ConfigSummaryCard(
+                title = "Current App Configuration",
+                brand = facade.brand,
+                environment = facade.environment,
+                appDisplayName = facade.appDisplayName,
+                apiBaseUrl = facade.apiBaseUrl,
+                featureFlags = facade.featureFlags,
+                modifier = Modifier.safeContentPadding().padding(16.dp),
+            )
         }
     }
 }

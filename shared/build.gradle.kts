@@ -47,7 +47,12 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
-            implementation(projects.network)
+            implementation(libs.koin.core)
+            // `api`: androidApp's FlavorShowcaseScreen calls koinInject() directly.
+            api(libs.koin.compose)
+            // `api`, not `implementation`: see network/build.gradle.kts - androidApp needs
+            // core's config types transitively through this module.
+            api(projects.network)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

@@ -31,6 +31,31 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+    buildFeatures {
+        buildConfig = true
+    }
+    // Brand/environment still come from Gradle product flavors; AndroidFlavorSelector reads
+    // them once at startup and hands a resolved AppConfig to Koin. Every module below
+    // androidApp only ever sees AppConfig, never these flavors or BuildConfig directly.
+    flavorDimensions += listOf("version", "environment")
+    productFlavors {
+        create("trella") {
+            dimension = "version"
+            buildConfigField("String", "BRAND", "\"trella\"")
+        }
+        create("ostouly") {
+            dimension = "version"
+            buildConfigField("String", "BRAND", "\"ostouly\"")
+        }
+        create("staging") {
+            dimension = "environment"
+            buildConfigField("String", "ENVIRONMENT", "\"staging\"")
+        }
+        create("production") {
+            dimension = "environment"
+            buildConfigField("String", "ENVIRONMENT", "\"production\"")
+        }
+    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
