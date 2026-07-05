@@ -1,6 +1,7 @@
 package com.hacker.kmmflavors.config
 
 import com.hacker.core.config.AppConfig
+import com.hacker.core.config.BaseUrls
 import com.hacker.core.config.Brand
 import com.hacker.core.config.Environment
 import com.hacker.core.config.FeatureFlags
@@ -14,7 +15,7 @@ interface AppConfigFacade {
     val brand: Brand
     val environment: Environment
     val appDisplayName: String
-    val apiBaseUrl: String
+    val apiBaseUrls: BaseUrls
     val featureFlags: FeatureFlags
 }
 
@@ -24,6 +25,6 @@ class DefaultAppConfigFacade(
     override val brand: Brand get() = appConfig.brand
     override val environment: Environment get() = appConfig.environment
     override val appDisplayName: String get() = appConfig.appDisplayName
-    override val apiBaseUrl: String get() = appConfig.apiBaseUrl
+    override val apiBaseUrls: BaseUrls get() = appConfig.baseUrls
     override val featureFlags: FeatureFlags get() = appConfig.featureFlags
 }

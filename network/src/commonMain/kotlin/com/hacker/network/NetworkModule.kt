@@ -5,6 +5,6 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 fun networkModule(): Module = module {
-    single { ApiClientConfig(baseUrl = get<AppConfig>().apiBaseUrl) }
+    single { ApiClientConfig(baseUrls = get<AppConfig>().baseUrls) }
     single { NetworkClient(get()) }
 }

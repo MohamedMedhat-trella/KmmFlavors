@@ -18,23 +18,29 @@ class DefaultAppConfigProvider(
             Environment.STAGING -> AppConfig(
                 brand = Brand.TRELLA,
                 environment = Environment.STAGING,
-                apiBaseUrl = "https://api.staging.trella.app",
                 appDisplayName = "Trella (Staging)",
                 featureFlags = FeatureFlags(
                     isPromotionsBannerEnabled = false,
                     isDebugMenuEnabled = true,
                 ),
+                BaseUrls(
+                    accounts = "https://accounts.staging.trella.app",
+                    financial = "https://financial.staging.trella.app",
+                )
             )
 
             Environment.PRODUCTION -> AppConfig(
                 brand = Brand.TRELLA,
                 environment = Environment.PRODUCTION,
-                apiBaseUrl = "https://api.trella.app",
                 appDisplayName = "Trella",
                 featureFlags = FeatureFlags(
                     isPromotionsBannerEnabled = false,
                     isDebugMenuEnabled = false,
                 ),
+                BaseUrls(
+                    accounts = "https://accounts.trella.app",
+                    financial = "https://financial.trella.app",
+                )
             )
         }
 
@@ -42,23 +48,29 @@ class DefaultAppConfigProvider(
             Environment.STAGING -> AppConfig(
                 brand = Brand.OSTOULY,
                 environment = Environment.STAGING,
-                apiBaseUrl = "https://api.staging.ostouly.com",
                 appDisplayName = "Ostouly (Staging)",
                 featureFlags = FeatureFlags(
                     isPromotionsBannerEnabled = true,
                     isDebugMenuEnabled = true,
                 ),
+                BaseUrls(
+                    accounts = "https://accounts.staging.ostouly.com",
+                    financial = "https://financial.staging.ostouly.com",
+                )
             )
 
             Environment.PRODUCTION -> AppConfig(
                 brand = Brand.OSTOULY,
                 environment = Environment.PRODUCTION,
-                apiBaseUrl = "https://api.ostouly.com",
                 appDisplayName = "Ostouly",
                 featureFlags = FeatureFlags(
                     isPromotionsBannerEnabled = true,
                     isDebugMenuEnabled = false,
                 ),
+                BaseUrls(
+                    accounts = "https://accounts.ostouly.com",
+                    financial = "https://financial.ostouly.com",
+                )
             )
         }
     }

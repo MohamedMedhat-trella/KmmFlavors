@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.hacker.core.config.BaseUrls
 import com.hacker.core.config.Brand
 import com.hacker.core.config.Environment
 import com.hacker.core.config.FeatureFlags
@@ -23,7 +24,7 @@ fun ConfigSummaryCard(
     brand: Brand,
     environment: Environment,
     appDisplayName: String,
-    apiBaseUrl: String,
+    baseUrls: BaseUrls,
     featureFlags: FeatureFlags,
     modifier: Modifier = Modifier,
 ) {
@@ -33,7 +34,8 @@ fun ConfigSummaryCard(
             ConfigRow("Brand", brand.name)
             ConfigRow("Environment", environment.name)
             ConfigRow("Display name", appDisplayName)
-            ConfigRow("API base URL", apiBaseUrl)
+            ConfigRow("Accounts base URL", baseUrls.accounts)
+            ConfigRow("Financials base URL", baseUrls.financial)
             ConfigRow("Promotions banner", featureFlags.isPromotionsBannerEnabled.toString())
             ConfigRow("Debug menu", featureFlags.isDebugMenuEnabled.toString())
         }

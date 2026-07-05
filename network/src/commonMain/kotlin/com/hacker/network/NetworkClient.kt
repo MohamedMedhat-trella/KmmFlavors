@@ -8,5 +8,5 @@ package com.hacker.network
 class NetworkClient(
     private val config: ApiClientConfig,
 ) {
-    fun resolveUrl(path: String): String = config.baseUrl.trimEnd('/') + "/" + path.trimStart('/')
+    fun resolveAccountsUrl(path: String): String = config.baseUrls.accounts.trimEnd('/') + "/" + path.trimStart('/')
 }

@@ -29,7 +29,7 @@ fun App() {
                 brand = facade.brand,
                 environment = facade.environment,
                 appDisplayName = facade.appDisplayName,
-                apiBaseUrl = facade.apiBaseUrl,
+                baseUrls = facade.apiBaseUrls,
                 featureFlags = facade.featureFlags,
                 modifier = Modifier.safeContentPadding().padding(16.dp),
             )
