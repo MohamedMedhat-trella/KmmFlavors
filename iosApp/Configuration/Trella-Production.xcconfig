@@ -1,0 +1,8 @@
+#include "Config.xcconfig"
+
+// Mirrors androidApp's "trella" x "production" product flavor combo.
+APP_BRAND = trella
+APP_ENVIRONMENT = production
+
+// Mirrors Android's default applicationId (no suffix for the "production" flavor).
+PRODUCT_BUNDLE_IDENTIFIER = com.hacker.kmmflavors$(TEAM_ID)
