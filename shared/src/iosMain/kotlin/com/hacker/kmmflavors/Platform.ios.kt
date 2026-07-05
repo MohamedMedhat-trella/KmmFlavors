@@ -1,5 +1,7 @@
 package com.hacker.kmmflavors
 
+import androidx.compose.runtime.Composable
+import platform.Foundation.NSBundle
 import platform.UIKit.UIDevice
 
 class IOSPlatform: Platform {
@@ -7,3 +9,8 @@ class IOSPlatform: Platform {
 }
 
 actual fun getPlatform(): Platform = IOSPlatform()
+
+@Composable
+actual fun getAppId(): String {
+    return NSBundle.mainBundle.bundleIdentifier ?: "unknown"
+}

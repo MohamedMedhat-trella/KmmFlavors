@@ -13,6 +13,7 @@ import com.hacker.core.config.BaseUrls
 import com.hacker.core.config.Brand
 import com.hacker.core.config.Environment
 import com.hacker.core.config.FeatureFlags
+import com.hacker.kmmflavors.getAppId
 
 /**
  * Pure presentation: takes plain values rather than an AppConfigFacade or AppConfig, so it
@@ -31,6 +32,7 @@ fun ConfigSummaryCard(
     Card(modifier = modifier.fillMaxWidth()) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = title, style = MaterialTheme.typography.titleMedium)
+            Text(text = "Package Name: ${getAppId()}")
             ConfigRow("Brand", brand.name)
             ConfigRow("Environment", environment.name)
             ConfigRow("Display name", appDisplayName)

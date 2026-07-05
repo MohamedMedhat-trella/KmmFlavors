@@ -46,10 +46,12 @@ android {
         create("ostouly") {
             dimension = "version"
             buildConfigField("String", "BRAND", "\"ostouly\"")
+            applicationId = "com.hacker.ostouly"
         }
         create("staging") {
             dimension = "environment"
             buildConfigField("String", "ENVIRONMENT", "\"staging\"")
+            applicationIdSuffix = ".staging"
         }
         create("production") {
             dimension = "environment"
