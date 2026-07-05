@@ -1,0 +1,8 @@
+#include "Config.xcconfig"
+
+// Mirrors androidApp's "ostouly" x "staging" product flavor combo.
+APP_BRAND = ostouly
+APP_ENVIRONMENT = staging
+
+// Mirrors Android's applicationIdSuffix ".staging" on the "ostouly" applicationId.
+PRODUCT_BUNDLE_IDENTIFIER = com.hacker.ostouly.staging$(TEAM_ID)

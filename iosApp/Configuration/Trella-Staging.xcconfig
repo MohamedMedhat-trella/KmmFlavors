@@ -1,0 +1,8 @@
+#include "Config.xcconfig"
+
+// Mirrors androidApp's "trella" x "staging" product flavor combo.
+APP_BRAND = trella
+APP_ENVIRONMENT = staging
+
+// Mirrors Android's applicationIdSuffix ".staging" on the "trella" applicationId.
+PRODUCT_BUNDLE_IDENTIFIER = com.hacker.kmmflavors.staging$(TEAM_ID)

@@ -1,0 +1,2 @@
+#include "Trella-Staging.xcconfig"
+#include "BuildType-Debug.xcconfig"

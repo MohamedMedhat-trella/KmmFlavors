@@ -1,0 +1,11 @@
+// Release-only compiler settings, shared by every brand x environment combination built in
+// release. Mirrors androidApp's "release" Gradle build type (isMinifyEnabled = false).
+
+// See BuildType-Debug.xcconfig for why KOTLIN_FRAMEWORK_BUILD_TYPE is spelled out explicitly.
+KOTLIN_FRAMEWORK_BUILD_TYPE = release
+
+DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
+ENABLE_NS_ASSERTIONS = NO
+MTL_ENABLE_DEBUG_INFO = NO
+SWIFT_COMPILATION_MODE = wholemodule
+VALIDATE_PRODUCT = YES

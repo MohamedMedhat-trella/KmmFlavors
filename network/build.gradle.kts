@@ -64,8 +64,11 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(libs.kotlin.stdlib)
-                // Add KMP dependencies here
-                implementation(projects.core)
+                implementation(libs.koin.core)
+                // `api`, not `implementation`: androidApp needs core's config types (Brand,
+                // Environment, BuildSelector, ...) on its classpath to build a BuildSelector,
+                // and only depends on this chain transitively through shared -> network -> core.
+                api(projects.core)
             }
         }
 

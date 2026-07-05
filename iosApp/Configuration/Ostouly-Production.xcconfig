@@ -1,0 +1,8 @@
+#include "Config.xcconfig"
+
+// Mirrors androidApp's "ostouly" x "production" product flavor combo.
+APP_BRAND = ostouly
+APP_ENVIRONMENT = production
+
+// Mirrors Android's "ostouly" applicationId override (no suffix for "production").
+PRODUCT_BUNDLE_IDENTIFIER = com.hacker.ostouly$(TEAM_ID)
